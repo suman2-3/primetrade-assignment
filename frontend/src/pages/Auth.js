@@ -14,6 +14,9 @@ export default function Auth() {
 
   const role = getUserRole();
 
+  // ✅ ADD THIS
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async () => {
     try {
       if (isLogin) {
@@ -21,13 +24,14 @@ export default function Auth() {
           email: form.email,
           password: form.password,
         });
+
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.role);
-        
-        if (role === "admin") {
-            window.location.href = "/admin";
+
+        if (res.data.role === "admin") {
+          window.location.href = "/admin";
         } else {
-            window.location.href = "/dashboard";
+          window.location.href = "/dashboard";
         }
 
       } else {
@@ -57,11 +61,29 @@ export default function Auth() {
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
 
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-        />
+        {/* ✅ UPDATED PASSWORD INPUT */}
+        <div style={{ position: "relative" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            onChange={(e) =>
+              setForm({ ...form, password: e.target.value })
+            }
+          />
+
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+            }}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </span>
+        </div>
 
         {!isLogin && (
           <select
