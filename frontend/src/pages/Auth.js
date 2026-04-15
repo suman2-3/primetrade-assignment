@@ -66,7 +66,7 @@ export default function Auth() {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            style={{ paddingRight: "40px" }}
+            style={{ paddingRight: "9px" }}
             onChange={(e) =>
               setForm({ ...form, password: e.target.value })
             }
