@@ -21,5 +21,8 @@ const helmet = require("helmet");
 
 app.use(helmet());
 
+app.get("/", (req, res) => {
+  res.send("API Running ");
+});
 
 module.exports = app;
