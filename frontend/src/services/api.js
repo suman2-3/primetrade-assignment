@@ -1,10 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/v1"
-});
-
-// Attach token automatically
+  baseURL: "https://primetrade-assignment-wlnz.onrender.com/api/v1"
+});// Attach token automatically
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
   if (token) {
