@@ -61,11 +61,12 @@ export default function Auth() {
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
 
-        {/* ✅ UPDATED PASSWORD INPUT */}
+        {/* UPDATED PASSWORD INPUT */}
         <div style={{ position: "relative" }}>
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
+            style={{ paddingRight: "40px" }}
             onChange={(e) =>
               setForm({ ...form, password: e.target.value })
             }
